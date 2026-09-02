@@ -26,3 +26,7 @@ etakkan folder proyek ini di dalam direktori root server lokal:
    ```text
    laragon\www\pemweb-obe
    ```
+
+# praktikum2 WebLab - Inventaris Laboratorium
+Proyek praktikum ini mengimplementasikan struktur dasar halaman web menggunakan HTML5 semantik dan prinsip aksesibilitas web (A11y). Halaman dirancang sebagai portal inventaris peralatan laboratorium dengan navigasi yang terstruktur serta formulir kontak.
+
