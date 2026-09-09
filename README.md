@@ -1,49 +1,26 @@
-# Praktikum Web Kost Pak Sapriadi (3 Pintu) - Milestone Minggu 2
+# Proyek Web Kost Pak Sapriadi (3 Pintu) - Milestone Minggu 3
 
-Repositori ini memuat struktur HTML5 semantik dan aksesibilitas web dasar untuk Milestone Minggu 2 Mata Kuliah Pemrograman Web (26TJ453127), Jurusan Teknik Komputer, Universitas Borneo Tarakan.
+Repositori ini memuat implementasi CSS Modern, Desain Responsif (Mobile-First), Flexbox, CSS Grid, dan Aksesibilitas Visual untuk Milestone Pertemuan 3 Mata Kuliah Pemrograman Web (26TJ453127), Jurusan Teknik Komputer, Universitas Borneo Tarakan.
 
-## 1. Deskripsi Praktikum
+## 1. Deskripsi Proyek
 * **Nama Sistem:** Sistem Informasi dan Manajemen Kost Pak Sapriadi (3 Pintu)
-* **Konsep Properti:** Memiliki 3 pintu sewa mandiri dengan tarif sewa terjangkau **Rp 1.000.000 / bulan**. Di dalam setiap pintu terdapat ruang tengah, 2 kamar tidur, dapur, dan toilet mandiri.
-* **Tujuan Web:** Menyajikan status ketersediaan 3 unit pintu, pelaporan kerusakan sarana, dan transaksi pembayaran sewa.
+* **Karakteristik Desain:** Pendekatan *Mobile-First*, palet warna sejuk bernuansa biru modern, tipografi adaptif, dan layout fluid menggunakan Flexbox serta CSS Grid murni tanpa dependensi CSS framework eksternal.
 
 ## 2. Cara Menjalankan Aplikasi
-1. Jalankan aplikasi server lokal **Laragon 5** (pastikan modul Apache aktif).
-2. Simpan folder repositori ini pada direktori: `C:\laragon\www\proyek-semester`.
-3. Buka peramban web dan akses alamat:
-   `http://localhost/proyek-semester/`
+1. Jalankan aplikasi server lokal **Laragon 5** (pastikan Apache aktif).
+2. Simpan direktori repositori ini pada: `C:\laragon\www\pemweb-obe`.
+3. Buka peramban dan akses alamat:
+   `http://localhost/pemweb-obe/`
 
-## 3. Sitemap & Wireframe Sederhana
-### A. Sitemap Halaman Utama
-- Header & Navigasi Utama
-  - #tentang (Profil & Judul Utama H1)
-  - #katalog (Daftar 3 Pintu Kost)
-  - #kontak (Formulir Minat Sewa)
-- Footer
+## 3. Catatan Keputusan Desain (Design Decisions)
+* **Custom Properties (`:root`):** Menggunakan variabel global CSS untuk warna brand (`#0284c7`), permukaan (`#ffffff`), teks (`#1e293b`), dan skala jarak konsisten (`--space-1` hingga `--space-4`).
+* **Flexbox (1 Dimensi):** Diterapkan pada `<header>` dan elemen `<nav>` guna menyusun logo dan link navigasi secara adaptif dengan wrapping horizontal.
+* **CSS Grid (2 Dimensi):** Diterapkan pada katalog kamar (`#katalog`) menggunakan `repeat(auto-fit, minmax(17rem, 1fr))` sehingga kartu unit pintu tersusun otomatis dari 1 kolom (mobile), 2 kolom (tablet), hingga 3 kolom (desktop) tanpa banyak media query kaku.
+* **Mobile-First & Fluid Units:** Basis CSS dibangun untuk resolusi terkecil (320px), dengan pemanfaatan fungsi `clamp()` untuk ukuran judul utama `h1` dan `width: min(100% - 2rem, 72rem)` untuk batas container tengah.
 
-### B. Wireframe Sederhana
-+-------------------------------------------------------+
-| HEADER: Kost Pak Sapriadi | Nav: Tentang, Katalog, Kontak
-+-------------------------------------------------------+
-| MAIN                                                  |
-|  [SECTION 1: H1 Judul Utama & Profil Kost]            |
-|                                                       |
-|  [SECTION 2: Katalog Kamar 3 Pintu]                   |
-|   - ARTICLE: Pintu 01 (Status: Tersedia)              |
-|   - ARTICLE: Pintu 02 (Status: Terisi)                |
-|   - ARTICLE: Pintu 03 (Status: Tersedia)              |
-|                                                       |
-|  [SECTION 3: Formulir Minat Sewa]                     |
-|   - Label & Input: Nama, WhatsApp, Pilihan Pintu, Pesan|
-|   - Tombol Kirim                                      |
-+-------------------------------------------------------+
-| FOOTER: Hak Cipta © 2026 Kost Pak Sapriadi (3 Pintu)  |
-+-------------------------------------------------------+
-
-## 4. Checklist Aksesibilitas Dasar (Self-Review)
-- [x] Dokumen menggunakan `lang="id"`.
-- [x] Struktur semantik lengkap: `header`, `nav`, `main`, 3 `section`, `article`, `form`, dan `footer`.
-- [x] Halaman bebas dari penggunaan tag `<div>` yang tidak bermakna.
-- [x] Hierarki heading logis dan berurutan (`h1` -> `h2` -> `h3`).
-- [x] Setiap kolom form terhubung dengan elemen `label` melalui atribut `for` dan `id`.
-- [x] Navigasi keyboard (tombol Tab) dapat menjangkau seluruh link, input, dan tombol aksi.
+## 4. Checklist Pengujian Responsif & Aksesibilitas
+- [x] **Layar Ponsel (320px):** Layout bertumpuk vertikal, menu navigasi wrap rapi, dan nol horizontal scrolling (bebas overflow).
+- [x] **Layar Tablet (768px):** Kartu katalog unit membelah 2 kolom proporsional.
+- [x] **Layar Desktop (1024px+):** Tiga kartu unit pintu berjejer sejajar dan lebar konten terjaga di tengah layar.
+- [x] **Indikator Fokus Keyboard (`:focus-visible`):** Outline navigasi keyboard tetap terlihat kontras setebal 3px dengan offset 3px saat menekan tombol `Tab`.
+- [x] **Kontras Warna:** Rasio kontras teks terhadap latar belakang telah memenuhi standar minimum WCAG AA.
