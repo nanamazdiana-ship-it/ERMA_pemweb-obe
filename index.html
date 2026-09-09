@@ -1,22 +1,37 @@
 <!doctype html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kost Pak Sapriadi</title>
+  <title>Kost Pak Sapriadi - Landing Page Responsif</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
 
-  <!-- Navigasi Utama Halaman -->
+  <!-- ========================================================
+       AKSESIBILITAS: SKIP NAVIGATION LINK
+       Tombol pintas tersembunyi yang muncul saat tombol Tab ditekan, 
+       berguna bagi pengguna tunanetra / keyboard agar langsung loncat ke konten
+       ======================================================== -->
+  <a href="#tentang" class="skip-link">Lewati ke konten utama</a>
+
+  <!-- ========================================================
+       BAGIAN HEADER (Kepala Halaman)
+       Membungkus identitas utama situs (logo) dan bilah navigasi (nav)
+       ======================================================== -->
   <header>
+    <!-- Logo situs dibungkus link agar saat diklik kembali ke beranda -->
     <a href="#tentang" aria-label="Beranda Kost Pak Sapriadi">
-      <!-- Menggunakan auto pada height agar rasio gambar tetap proporsional -->
       <img src="logo.png" alt="Logo Kost Pak Sapriadi" width="120" style="height: auto;">
     </a>
 
+    <!-- Tag nav menandai menu navigasi resmi situs (syarat semantik) -->
     <nav aria-label="Navigasi Utama">
       <ul>
+        <!-- Anchor link menuju ke ID section masing-masing di bawah -->
         <li><a href="#tentang">Tentang Kost</a></li>
         <li><a href="#katalog">Katalog Unit</a></li>
         <li><a href="#kontak">Hubungi Kami</a></li>
@@ -24,54 +39,61 @@
     </nav>
   </header>
 
-  <!-- Konten Pokok Dokumen -->
+  <!-- ========================================================
+       BAGIAN MAIN (Konten Pokok)
+       Hanya boleh ada 1 tag main dalam 1 halaman web
+       ======================================================== -->
   <main>
 
-    <!-- SECTION 1: PROFIL -->
+    <!-- SECTION 1: PROFIL KOST -->
     <section id="tentang">
       <h1>Kost Pak Sapriadi</h1>
       <p>Layanan hunian sewa 3 pintu yang tenang dan strategis dekat kampus. Setiap pintu memiliki ruang tengah, 2 kamar tidur di dalamnya, dapur, dan toilet dengan tarif Rp 1.000.000 per bulan.</p>
     </section>
 
-    <!-- SECTION 2: DAFTAR UNIT -->
+    <!-- SECTION 2: KATALOG UNIT KAMARn -->
     <section id="katalog">
       <h2>Daftar Ketersediaan Unit</h2>
 
       <!-- Article 1: Pintu 01 -->
       <article>
         <h3>Unit Pintu 01</h3>
+        
+        <!-- Gambar dibungkus figure dan figcaption untuk aksesibilitas visual -->
         <figure>
           <img src="pintukos.jpg" alt="Tampak depan kamar unit Pintu 01 Kost Pak Sapriadi" width="300">
           <figcaption>Unit Pintu 01</figcaption>
         </figure>
 
-        <p>Status: Tersedia</p>
-        <p>Tarif Sewa: Rp 1.000.000 / bulan</p>
-        <p>Fasilitas: Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
+        <p><strong>Status:</strong> Tersedia</p>
+        <p><strong>Tarif Sewa:</strong> Rp 1.000.000 / bulan</p>
+        <p><strong>Fasilitas:</strong> Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
       </article>
 
       <!-- Article 2: Pintu 02 -->
       <article>
         <h3>Unit Pintu 02</h3>
-        <p>Status: Terisi</p>
-        <p>Tarif Sewa: Rp 1.000.000 / bulan</p>
-        <p>Fasilitas: Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
+        <p><strong>Status:</strong> Terisi</p>
+        <p><strong>Tarif Sewa:</strong> Rp 1.000.000 / bulan</p>
+        <p><strong>Fasilitas:</strong> Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
       </article>
 
       <!-- Article 3: Pintu 03 -->
       <article>
         <h3>Unit Pintu 03</h3>
-        <p>Status: Tersedia</p>
-        <p>Tarif Sewa: Rp 1.000.000 / bulan</p>
-        <p>Fasilitas: Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
+        <p><strong>Status:</strong> Tersedia</p>
+        <p><strong>Tarif Sewa:</strong> Rp 1.000.000 / bulan</p>
+        <p><strong>Fasilitas:</strong> Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
       </article>
     </section>
 
-    <!-- SECTION 3: FORMULIR BOOKING / KONTAK -->
+    <!-- SECTION 3: FORMULIR MINAT SEWA -->
     <section id="kontak">
       <h2>Formulir Minat Sewa</h2>
+      
       <form action="#" method="post">
         <p>
+          <!-- Atribut for pada label terhubung dengan id pada input untuk aksesibilitas -->
           <label for="nama">Nama Lengkap:</label>
           <input type="text" id="nama" name="nama" required>
         </p>
@@ -97,6 +119,7 @@
         </p>
 
         <p>
+          <!-- Tombol bertipe submit untuk mengirim data formulir -->
           <button type="submit">Kirim</button>
         </p>
       </form>
@@ -104,7 +127,10 @@
 
   </main>
 
-  <!-- Penutup Dokumen -->
+  <!-- ========================================================
+       BAGIAN FOOTER (Kaki Halaman)
+       Berisi informasi hak cipta dan penutup dokumen
+       ======================================================== -->
   <footer>
     <p>&copy; 2026 Kost Pak Sapriadi (3 Pintu). Praktikum Pemrograman Web UBT.</p>
   </footer>
