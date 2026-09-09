@@ -1,32 +1,49 @@
-## Praktikum Modul 1
+# Proyek Web Kost Pak Sapriadi (3 Pintu) - Milestone Minggu 2
 
-## Identitas Mata Kuliah & Mahasiswa
-**Mata Kuliah:** Praktikum Pemrograman web
-**Nama:** Erma Sari
-**NPM:** 2440304005
-**Program Studi:** Teknik Komputer
-**Semester:** 5
+Repositori ini memuat struktur HTML5 semantik dan aksesibilitas web dasar untuk Milestone Minggu 2 Mata Kuliah Pemrograman Web (26TJ453127), Jurusan Teknik Komputer, Universitas Borneo Tarakan.
 
-## Deskripsi Proyek
-Repositori ini merupakan proyek praktikum mandiri matakuliah pemrograman web 
+## 1. Deskripsi Proyek
+* **Nama Sistem:** Sistem Informasi dan Manajemen Kost Pak Sapriadi (3 Pintu)
+* **Konsep Properti:** Memiliki 3 pintu sewa mandiri dengan tarif sewa terjangkau **Rp 1.000.000 / bulan**. Di dalam setiap pintu terdapat ruang tengah, 2 kamar tidur, dapur, dan toilet mandiri.
+* **Tujuan Web:** Menyajikan status ketersediaan 3 unit pintu, pelaporan kerusakan sarana, dan transaksi pembayaran sewa.
 
-## Teknologi yang Digunakan
-**Local Web Server:** Laragon 5.0.0 (Apache 2.4)
-**Runtime Environment:** PHP 8.4
-**Version Control System:** Git & GitHub
-**Code Editor:** Visual Studio Code
-**Struktur Markup:** HTML5
+## 2. Cara Menjalankan Aplikasi
+1. Jalankan aplikasi server lokal **Laragon 5** (pastikan modul Apache aktif).
+2. Simpan folder repositori ini pada direktori: `C:\laragon\www\proyek-semester`.
+3. Buka peramban web dan akses alamat:
+   `http://localhost/proyek-semester/`
 
+## 3. Sitemap & Wireframe Sederhana
+### A. Sitemap Halaman Utama
+- Header & Navigasi Utama
+  - #tentang (Profil & Judul Utama H1)
+  - #katalog (Daftar 3 Pintu Kost)
+  - #kontak (Formulir Minat Sewa)
+- Footer
 
-## Cara Menjalankan Proyek di Laragon 5
-Pastikan aplikasi **Laragon 5** telah terpasang di komputer.
-Pastikan service server berjalan dengan menekan tombol **Start All** pada Laragon.
-Pastikan versi PHP yang aktif adalah **PHP 8.4** (Menu Laragon > **PHP** > Version** > pilih `php-8.4...`).
-etakkan folder proyek ini di dalam direktori root server lokal:
-   ```text
-   laragon\www\pemweb-obe
-   ```
+### B. Wireframe Sederhana
++-------------------------------------------------------+
+| HEADER: Kost Pak Sapriadi | Nav: Tentang, Katalog, Kontak
++-------------------------------------------------------+
+| MAIN                                                  |
+|  [SECTION 1: H1 Judul Utama & Profil Kost]            |
+|                                                       |
+|  [SECTION 2: Katalog Kamar 3 Pintu]                   |
+|   - ARTICLE: Pintu 01 (Status: Tersedia)              |
+|   - ARTICLE: Pintu 02 (Status: Terisi)                |
+|   - ARTICLE: Pintu 03 (Status: Tersedia)              |
+|                                                       |
+|  [SECTION 3: Formulir Minat Sewa]                     |
+|   - Label & Input: Nama, WhatsApp, Pilihan Pintu, Pesan|
+|   - Tombol Kirim                                      |
++-------------------------------------------------------+
+| FOOTER: Hak Cipta © 2026 Kost Pak Sapriadi (3 Pintu)  |
++-------------------------------------------------------+
 
-# praktikum2 WebLab - Inventaris Laboratorium
-Proyek praktikum ini mengimplementasikan struktur dasar halaman web menggunakan HTML5 semantik dan prinsip aksesibilitas web (A11y). Halaman dirancang sebagai portal inventaris peralatan laboratorium dengan navigasi yang terstruktur serta formulir kontak.
-
+## 4. Checklist Aksesibilitas Dasar (Self-Review)
+- [x] Dokumen menggunakan `lang="id"`.
+- [x] Struktur semantik lengkap: `header`, `nav`, `main`, 3 `section`, `article`, `form`, dan `footer`.
+- [x] Halaman bebas dari penggunaan tag `<div>` yang tidak bermakna.
+- [x] Hierarki heading logis dan berurutan (`h1` -> `h2` -> `h3`).
+- [x] Setiap kolom form terhubung dengan elemen `label` melalui atribut `for` dan `id`.
+- [x] Navigasi keyboard (tombol Tab) dapat menjangkau seluruh link, input, dan tombol aksi.

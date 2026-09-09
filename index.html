@@ -3,69 +3,105 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portal inventaris laboratorium Teknik Komputer">
-  <title>WebLab - Inventaris Laboratorium</title>
+  <title>Kost Pak Sapriadi</title>
 </head>
-<body id="top">
+<body>
+
+  <!-- Navigasi Utama Halaman (Syarat: nav) -->
   <header>
-    <a href="#main">Lewati ke konten utama</a>
-    <h1>
-      <!-- 1. GAMBAR SEBAGAI LINK -->
-      <a href="#top">
-        <img src="logo.png" alt="Kembali ke atas halaman WebLab" width="35">
-      </a>
-      WebLab
-    </h1>
-    <nav aria-label="Navigasi utama">
-      <a href="#tentang">Tentang</a>
-      <a href="#layanan">Layanan</a>
-      <a href="#kontak">Kontak</a>
+    <nav aria-label="Navigasi Utama">
+      <ul>
+        <li><a href="#tentang">Tentang Kost</a></li>
+        <li><a href="#katalog">Katalog Unit</a></li>
+        <li><a href="#kontak">Hubungi Kami</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main id="main">
-    <!-- Section 1: Tentang -->
+  <!-- Konten Pokok Dokumen (Syarat: main) -->
+  <main>
+
+    <!-- SECTION 1: PROFIL (Syarat: h1 tunggal dan section ke-1) -->
     <section id="tentang">
-      <h2>Tentang Laboratorium</h2>
-      <p>Pusat pengelolaan dan peminjaman perangkat laboratorium komputer.</p>
-      <!-- 2. GAMBAR INFORMATIF 1 -->
-      <img src="lab.jpg" alt="Foto suasana ruangan laboratorium komputer dengan deretan PC" width="400">
+      <h1>Kost Pak Sapriadi</h1>
+      <p>Layanan hunian sewa 3 pintu yang tenang dan strategis dekat kampus. Setiap pintu memiliki ruang tengah, 2 kamar tidur di dalamnya, dapur, dan toilet dengan tarif Rp 1.000.000 per bulan.</p>
     </section>
 
-    <!-- Section 2: Layanan & Article -->
-    <section id="layanan">
-      <h2>
-        <!-- 3. GAMBAR DEKORATIF 1 -->
-        <img src="ikonGerigi.png" alt="" width="24">
-        Layanan Inventaris
-      </h2>
-      <article>
-        <h3>Pencatatan Peralatan</h3>
-        <p>
-          <!-- 4. GAMBAR DEKORATIF 2 -->
-          <img src="ikonList.png" alt="" width="18">
-          Mencatat data alat dan status kondisi.
-        </p>
+   <!-- SECTION 2: DAFTAR UNIT -->
+    <section id="katalog">
+      <h2>Daftar Ketersediaan Unit</h2>
 
-        <!-- 5. GAMBAR INFORMATIF 2 -->
-        <h4>Denah Tata Letak Laboratorium Komputer</h4>
-        <img src="denah.jpg" alt="Denah tata letak lab: 20 PC di area tengah, meja instruktur di depan, dan lemari server di sisi kanan belakang" width="400">
+      <!-- Article 1: Pintu 01 (FOTO DIPINDAHKAN KE SINI) -->
+      <article>
+        <h3>Unit Pintu 01</h3>
+        <figure>
+          <img src="pintukos.jpg" alt="Tampak depan kamar unit Pintu 01 Kost Pak Sapriadi" width="300">
+          <figcaption>Unit Pintu 01</figcaption>
+        </figure>
+
+        <p>Status: Tersedia</p>
+        <p>Tarif Sewa: Rp 1.000.000 / bulan</p>
+        <p>Fasilitas: Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
+      </article>
+
+      <!-- Article 2: Pintu 02 -->
+      <article>
+        <h3>Unit Pintu 02</h3>
+        <p>Status: Terisi</p>
+        <p>Tarif Sewa: Rp 1.000.000 / bulan</p>
+        <p>Fasilitas: Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
+      </article>
+
+      <!-- Article 3: Pintu 03 -->
+      <article>
+        <h3>Unit Pintu 03</h3>
+        <p>Status: Tersedia</p>
+        <p>Tarif Sewa: Rp 1.000.000 / bulan</p>
+        <p>Fasilitas: Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
       </article>
     </section>
-
-    <!-- Section 3: Form Kontak -->
+    <!-- SECTION 3: FORMULIR BOOKING / KONTAK (Syarat: section ke-3 dan 1 form berlabel) -->
     <section id="kontak">
-      <h2>Kontak</h2>
-      <form>
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required>
-        <button type="submit">Kirim</button>
+      <h2>Formulir Minat Sewa</h2>
+      <form action="#" method="post">
+        <!-- Pengelompokan baris menggunakan tag p, bukan div -->
+        <p>
+          <label for="nama">Nama Lengkap:</label>
+          <input type="text" id="nama" name="nama" required>
+        </p>
+
+        <p>
+          <label for="telepon">Nomor WhatsApp:</label>
+          <input type="tel" id="telepon" name="telepon" required>
+        </p>
+
+        <p>
+          <label for="pilihan-pintu">Pilih Unit Pintu:</label>
+          <select id="pilihan-pintu" name="pilihan_pintu" required>
+            <option value="">-- Pilih Unit Pintu --</option>
+            <option value="pintu-01">Pintu 01 (Tersedia)</option>
+            <option value="pintu-02">Pintu 02 (Terisi)</option>
+            <option value="pintu-03">Pintu 03 (Tersedia)</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="pesan">Pesan atau Rencana Survei:</label>
+          <textarea id="pesan" name="pesan" rows="4"></textarea>
+        </p>
+
+        <p>
+          <button type="submit">Kirim</button>
+        </p>
       </form>
     </section>
+
   </main>
 
+  <!-- Penutup Dokumen (Syarat: footer) -->
   <footer>
-    <p>&copy; 2026 WebLab</p>
+    <p>&copy; 2026 Kost Pak Sapriadi (3 Pintu). Praktikum Pemrograman Web UBT.</p>
   </footer>
+
 </body>
 </html>
