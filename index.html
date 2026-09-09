@@ -7,14 +7,13 @@
 </head>
 <body>
 
-  <!-- Navigasi Utama Halaman (Syarat: nav) -->
+  <!-- Navigasi Utama Halaman -->
   <header>
-
-    <!-- Logo Identitas Kost di Pojok Kiri Atas -->
-    <a href="#konten-utama" aria-label="Beranda Kost Pak Sapriadi">
-      <img src="logo.png" alt="Logo Kost Pak Sapriadi" width="120" height="40">
+    <a href="#tentang" aria-label="Beranda Kost Pak Sapriadi">
+      <!-- Menggunakan auto pada height agar rasio gambar tetap proporsional -->
+      <img src="logo.png" alt="Logo Kost Pak Sapriadi" width="120" style="height: auto;">
     </a>
-    
+
     <nav aria-label="Navigasi Utama">
       <ul>
         <li><a href="#tentang">Tentang Kost</a></li>
@@ -24,20 +23,20 @@
     </nav>
   </header>
 
-  <!-- Konten Pokok Dokumen (Syarat: main) -->
+  <!-- Konten Pokok Dokumen -->
   <main>
 
-    <!-- SECTION 1: PROFIL (Syarat: h1 tunggal dan section ke-1) -->
+    <!-- SECTION 1: PROFIL -->
     <section id="tentang">
       <h1>Kost Pak Sapriadi</h1>
       <p>Layanan hunian sewa 3 pintu yang tenang dan strategis dekat kampus. Setiap pintu memiliki ruang tengah, 2 kamar tidur di dalamnya, dapur, dan toilet dengan tarif Rp 1.000.000 per bulan.</p>
     </section>
 
-   <!-- SECTION 2: DAFTAR UNIT -->
+    <!-- SECTION 2: DAFTAR UNIT -->
     <section id="katalog">
       <h2>Daftar Ketersediaan Unit</h2>
 
-      <!-- Article 1: Pintu 01 (FOTO DIPINDAHKAN KE SINI) -->
+      <!-- Article 1: Pintu 01 -->
       <article>
         <h3>Unit Pintu 01</h3>
         <figure>
@@ -66,11 +65,11 @@
         <p>Fasilitas: Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
       </article>
     </section>
-    <!-- SECTION 3: FORMULIR BOOKING / KONTAK (Syarat: section ke-3 dan 1 form berlabel) -->
+
+    <!-- SECTION 3: FORMULIR BOOKING / KONTAK -->
     <section id="kontak">
       <h2>Formulir Minat Sewa</h2>
       <form action="#" method="post">
-        <!-- Pengelompokan baris menggunakan tag p, bukan div -->
         <p>
           <label for="nama">Nama Lengkap:</label>
           <input type="text" id="nama" name="nama" required>
@@ -104,7 +103,7 @@
 
   </main>
 
-  <!-- Penutup Dokumen (Syarat: footer) -->
+  <!-- Penutup Dokumen -->
   <footer>
     <p>&copy; 2026 Kost Pak Sapriadi (3 Pintu). Praktikum Pemrograman Web UBT.</p>
   </footer>
