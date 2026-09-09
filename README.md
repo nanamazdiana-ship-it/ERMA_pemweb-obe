@@ -1,8 +1,8 @@
-# Proyek Web Kost Pak Sapriadi (3 Pintu) - Milestone Minggu 2
+# Praktikum Web Kost Pak Sapriadi (3 Pintu) - Milestone Minggu 2
 
 Repositori ini memuat struktur HTML5 semantik dan aksesibilitas web dasar untuk Milestone Minggu 2 Mata Kuliah Pemrograman Web (26TJ453127), Jurusan Teknik Komputer, Universitas Borneo Tarakan.
 
-## 1. Deskripsi Proyek
+## 1. Deskripsi Praktikum
 * **Nama Sistem:** Sistem Informasi dan Manajemen Kost Pak Sapriadi (3 Pintu)
 * **Konsep Properti:** Memiliki 3 pintu sewa mandiri dengan tarif sewa terjangkau **Rp 1.000.000 / bulan**. Di dalam setiap pintu terdapat ruang tengah, 2 kamar tidur, dapur, dan toilet mandiri.
 * **Tujuan Web:** Menyajikan status ketersediaan 3 unit pintu, pelaporan kerusakan sarana, dan transaksi pembayaran sewa.
