@@ -1,0 +1,246 @@
+/* ===================================================
+   1. CUSTOM PROPERTIES (VARIABEL WARNA & SPACING)
+   =================================================== */
+:root {
+  --brand: #0284c7;
+  --brand-hover: #0369a1;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --radius: 0.75rem;
+  --focus-ring: #0f172a;
+}
+
+/* ===================================================
+   2. RESET RINGAN & DASAR AKSESIBILITAS
+   =================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: #f8fafc;
+}
+
+/* Skip-link aksesibilitas */
+a[href="#konten-utama"] {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--brand);
+  color: #ffffff;
+  padding: var(--space-1) var(--space-2);
+  z-index: 100;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+a[href="#konten-utama"]:focus {
+  top: 1rem;
+}
+
+/* Indikator fokus keyboard wajib terlihat */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Pembatas wadah konten utama */
+header,
+main,
+footer {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+/* ===================================================
+   3. HEADER & NAVIGASI (FLEXBOX 1 DIMENSI)
+   =================================================== */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  padding: var(--space-1);
+}
+
+nav a:hover {
+  color: var(--brand);
+}
+
+/* ===================================================
+   4. SECTION PROFIL & TATA RUANG
+   =================================================== */
+section {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.2;
+  margin-bottom: var(--space-2);
+  color: var(--text);
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-2);
+}
+
+figure {
+  margin: var(--space-3) 0;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+figcaption {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+}
+
+/* ===================================================
+   5. KATALOG 3 PINTU (CSS GRID 2 DIMENSI)
+   =================================================== */
+#katalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+#katalog > h2,
+#katalog > p {
+  grid-column: 1 / -1;
+}
+
+article {
+  background-color: var(--surface);
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+article h3 {
+  margin-top: 0;
+  color: var(--brand);
+}
+
+/* ===================================================
+   6. FORMULIR BOOKING / KONTAK (ACCESSIBLE FORM)
+   =================================================== */
+form {
+  background-color: var(--surface);
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  max-width: 38rem;
+}
+
+form p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: var(--space-2);
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 0.25rem);
+  background-color: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brand);
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: var(--brand);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin-top: var(--space-1);
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--brand-hover);
+}
+
+/* ===================================================
+   7. FOOTER
+   =================================================== */
+footer {
+  padding: var(--space-3) 0 var(--space-4);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ===================================================
+   8. MEDIA QUERY (MOBILE-FIRST DESKTOP ADJUSTMENT)
+   =================================================== */
+@media (min-width: 48rem) {
+  #beranda {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-4);
+    align-items: center;
+  }
+}
