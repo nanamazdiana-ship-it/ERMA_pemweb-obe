@@ -1,7 +1,7 @@
 // File: assets/js/utils.js
 
 /**
- * Menerima array data inventaris dan mengembalikan objek ringkasan
+ * Menerima array inventaris kost dan mengembalikan objek statistik ringkasan.
  */
 export function ringkasInventaris(data) {
   if (!Array.isArray(data)) {

@@ -4,86 +4,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kost Pak Sapriadi - Landing Page Responsif</title>
+  <title>Kost Pak Sapriadi (3 Pintu)</title>
+  
+  <!-- Menghubungkan ke berkas eksternal CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="shortcut icon" href="#">
 </head>
 
 <body>
-  <!-- ========================================================
-       AKSESIBILITAS: SKIP NAVIGATION LINK
-       Tombol pintas tersembunyi yang muncul saat tombol Tab ditekan, 
-       berguna bagi pengguna tunanetra / keyboard agar langsung loncat ke konten
-       ======================================================== -->
+  <!-- AKSESIBILITAS: SKIP NAVIGATION LINK -->
   <a href="#tentang" class="skip-link">Lewati ke konten utama</a>
 
-  <!-- ========================================================
-       BAGIAN HEADER (Kepala Halaman)
-       Membungkus identitas utama situs (logo) dan bilah navigasi (nav)
-       ======================================================== -->
+  <!-- BAGIAN HEADER (Kepala Halaman) -->
   <header>
-    <!-- Logo situs dibungkus link agar saat diklik kembali ke beranda -->
     <a href="#tentang" aria-label="Beranda Kost Pak Sapriadi">
       <img src="logo.png" alt="Logo Kost Pak Sapriadi" width="120" style="height: auto;">
     </a>
 
-    <!-- Tag nav menandai menu navigasi resmi situs (syarat semantik) -->
     <nav aria-label="Navigasi Utama">
       <ul>
-        <!-- Anchor link menuju ke ID section masing-masing di bawah -->
         <li><a href="#tentang">Tentang Kost</a></li>
         <li><a href="#katalog">Katalog Unit</a></li>
         <li><a href="#kontak">Hubungi Kami</a></li>
+        <li><a class="login-link" href="login.html">Login</a></li>
+        <!-- Tombol Preferensi Tema (Modul 05) -->
+        <li><button id="theme-button" class="theme-button" type="button" aria-label="Ganti ke tema gelap" title="Ganti ke tema gelap" aria-pressed="false"></button></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ========================================================
-       BAGIAN MAIN (Konten Pokok)
-       Hanya boleh ada 1 tag main dalam 1 halaman web
-       ======================================================== -->
+  <!-- BAGIAN MAIN (Konten Pokok) -->
   <main>
 
     <!-- SECTION 1: PROFIL KOST -->
-    <section id="tentang">
+    <section id="tentang" class="intro-card">
       <h1>Kost Pak Sapriadi</h1>
-      <p>Layanan hunian sewa 3 pintu yang tenang dan strategis dekat kampus. Setiap pintu memiliki ruang tengah, 2 kamar tidur di dalamnya, dapur, dan toilet dengan tarif Rp 1.000.000 per bulan.</p>
+      <p>Layanan hunian sewa 3 pintu yang tenang dan strategis dekat kampus. Setiap unit memiliki ruang tengah, 2 kamar tidur di dalamnya, dapur, dan toilet dengan tarif Rp 1.000.000 per bulan.</p>
     </section>
 
-    <!-- SECTION 2: KATALOG UNIT KAMARn -->
+    <!-- SECTION 2: KATALOG UNIT KOST (DYNAMIC DOM TARGET) -->
     <section id="katalog">
       <h2>Daftar Ketersediaan Unit</h2>
 
-      <!-- Article 1: Pintu 01 -->
-      <article>
-        <h3>Unit Pintu 01</h3>
-        
-        <!-- Gambar dibungkus figure dan figcaption untuk aksesibilitas visual -->
-        <figure>
-          <img src="pintuKost.jpeg" alt="Tampak depan kamar unit Pintu 01 Kost Pak Sapriadi" width="300">
-          <figcaption>Unit Pintu 01</figcaption>
-        </figure>
+      <!-- Informasi unit kost (terpisah dari inventaris di bawah filter) -->
+      <div class="unit-grid" aria-label="Informasi unit kost">
+        <article class="card">
+          <h3>Unit Pintu 01</h3>
+          <img class="gambar-unit" src="pintuKost.jpeg" alt="Foto bagian depan Unit Pintu 01" loading="lazy">
+          <p class="unit-status"><span class="status-bubble status-occupied">Terisi</span></p>
+          <p>Tarif sewa: Rp 1.000.000 / bulan</p>
+          <p>Fasilitas: Ruang tengah, 2 kamar tidur, dapur, dan toilet.</p>
+        </article>
+        <article class="card">
+          <h3>Unit Pintu 02</h3>
+          <img class="gambar-unit" src="pintuKost.jpeg" alt="Foto bagian depan Unit Pintu 02" loading="lazy">
+          <p class="unit-status"><span class="status-bubble status-available">Tersedia</span></p>
+          <p>Tarif sewa: Rp 1.000.000 / bulan</p>
+          <p>Fasilitas: Ruang tengah, 2 kamar tidur, dapur, dan toilet.</p>
+        </article>
+        <article class="card">
+          <h3>Unit Pintu 03</h3>
+          <img class="gambar-unit" src="pintuKost.jpeg" alt="Foto bagian depan Unit Pintu 03" loading="lazy">
+          <p class="unit-status"><span class="status-bubble status-available">Tersedia</span></p>
+          <p>Tarif sewa: Rp 1.000.000 / bulan</p>
+          <p>Fasilitas: Ruang tengah, 2 kamar tidur, dapur, dan toilet.</p>
+        </article>
+      </div>
 
-        <p><strong>Status:</strong> Tersedia</p>
-        <p><strong>Tarif Sewa:</strong> Rp 1.000.000 / bulan</p>
-        <p><strong>Fasilitas:</strong> Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
-      </article>
+      <div class="search-toolbar">
+        <label for="cari-inventaris">Cari nama inventaris:</label>
+        <input type="search" id="cari-inventaris" placeholder="Contoh: Router Wi-Fi" autocomplete="off">
+      </div>
 
-      <!-- Article 2: Pintu 02 -->
-      <article>
-        <h3>Unit Pintu 02</h3>
-        <p><strong>Status:</strong> Terisi</p>
-        <p><strong>Tarif Sewa:</strong> Rp 1.000.000 / bulan</p>
-        <p><strong>Fasilitas:</strong> Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
-      </article>
+      <!-- Toolbar Filter Kondisi  -->
+      <div class="toolbar" role="group" aria-label="Filter inventaris kost">
+        <span>Filter Kondisi:</span>
+        <button data-filter="Semua" type="button">Semua</button>
+        <button data-filter="Baik" type="button">Baik</button>
+        <button data-filter="Perlu Cek" type="button">Perlu Cek</button>
+      </div>
 
-      <!-- Article 3: Pintu 03 -->
-      <article>
-        <h3>Unit Pintu 03</h3>
-        <p><strong>Status:</strong> Tersedia</p>
-        <p><strong>Tarif Sewa:</strong> Rp 1.000.000 / bulan</p>
-        <p><strong>Fasilitas:</strong> Ruang tengah, 2 kamar tidur di dalam, dapur, dan toilet mandiri.</p>
-      </article>
+      <div class="page-size-control">
+        <label for="jumlah-per-halaman">Jumlah item per halaman:</label>
+        <select id="jumlah-per-halaman">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+
+      <!-- Kartu inventaris ditampilkan secara dinamis oleh JavaScript -->
+      <section id="daftar-alat" aria-live="polite"></section>
+      <nav id="pagination-controls" class="pagination" aria-label="Navigasi halaman inventaris"></nav>
     </section>
 
     <!-- SECTION 3: FORMULIR MINAT SEWA -->
@@ -92,14 +104,13 @@
       
       <form action="#" method="post">
         <p>
-          <!-- Atribut for pada label terhubung dengan id pada input untuk aksesibilitas -->
           <label for="nama">Nama Lengkap:</label>
-          <input type="text" id="nama" name="nama" required>
+          <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda">
         </p>
 
         <p>
           <label for="telepon">Nomor WhatsApp:</label>
-          <input type="tel" id="telepon" name="telepon" required>
+          <input type="tel" id="telepon" name="telepon" required placeholder="08xxxxxxxxxx">
         </p>
 
         <p>
@@ -114,29 +125,24 @@
 
         <p>
           <label for="pesan">Pesan atau Rencana Survei:</label>
-          <textarea id="pesan" name="pesan" rows="4"></textarea>
+          <textarea id="pesan" name="pesan" rows="4" placeholder="Tuliskan pertanyaan atau tanggal rencana survei..."></textarea>
         </p>
 
         <p>
-          <!-- Tombol bertipe submit untuk mengirim data formulir -->
-          <button type="submit">Kirim</button>
+          <button type="submit">Kirim Pesan</button>
         </p>
       </form>
     </section>
 
   </main>
 
-  <!-- ========================================================
-       BAGIAN FOOTER (Kaki Halaman)
-       Berisi informasi hak cipta dan penutup dokumen
-       ======================================================== -->
+  <!-- BAGIAN FOOTER -->
   <footer>
     <p>&copy; 2026 Kost Pak Sapriadi (3 Pintu). Praktikum Pemrograman Web UBT.</p>
   </footer>
 
-  <!-- Load JavaScript ES Module via HTTP Localhost (Laragon) -->
-<!-- Panggilan script module yang benar sesuai struktur folder kamu -->
-<script type="module" src="assets/js/app.js"></script>
+  <!-- Load JavaScript ES Module -->
+  <script type="module" src="assets/js/app.js?v=4"></script>
 
 </body>
 </html>
