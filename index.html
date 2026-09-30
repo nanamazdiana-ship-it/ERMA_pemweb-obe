@@ -98,40 +98,57 @@
       <nav id="pagination-controls" class="pagination" aria-label="Navigasi halaman inventaris"></nav>
     </section>
 
-    <!-- SECTION 3: FORMULIR MINAT SEWA -->
+    <!-- SECTION 3: FORMULIR DATA MINAT -->
     <section id="kontak">
-      <h2>Formulir Minat Sewa</h2>
-      
-      <form action="#" method="post">
+      <h2>Formulir Data Minat</h2>
+
+      <form id="form-minat" novalidate>
         <p>
           <label for="nama">Nama Lengkap:</label>
-          <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda">
+          <input type="text" id="nama" name="nama" required minlength="3" pattern="[\p{L} ]{3,}" aria-describedby="nama-error" placeholder="Masukkan nama Anda" autocomplete="name">
+          <small id="nama-error" class="error-text" aria-live="polite"></small>
         </p>
 
         <p>
           <label for="telepon">Nomor WhatsApp:</label>
-          <input type="tel" id="telepon" name="telepon" required placeholder="08xxxxxxxxxx">
+          <input type="tel" id="telepon" name="telepon" required inputmode="numeric" aria-describedby="telepon-error" placeholder="08xxxxxxxxxx" autocomplete="tel">
+          <small id="telepon-error" class="error-text" aria-live="polite"></small>
+        </p>
+
+        <p>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required aria-describedby="email-error" placeholder="nama@contoh.com" autocomplete="email">
+          <small id="email-error" class="error-text" aria-live="polite"></small>
         </p>
 
         <p>
           <label for="pilihan-pintu">Pilih Unit Pintu:</label>
-          <select id="pilihan-pintu" name="pilihan_pintu" required>
+          <select id="pilihan-pintu" name="pilihan_pintu" required aria-describedby="pilihan-pintu-error">
             <option value="">-- Pilih Unit Pintu --</option>
-            <option value="pintu-01">Pintu 01 (Tersedia)</option>
-            <option value="pintu-02">Pintu 02 (Terisi)</option>
+            <option value="pintu-02">Pintu 02 (Tersedia)</option>
             <option value="pintu-03">Pintu 03 (Tersedia)</option>
           </select>
+          <small id="pilihan-pintu-error" class="error-text" aria-live="polite"></small>
+        </p>
+
+        <p>
+          <label for="tanggal-survei">Tanggal Rencana Survei (opsional):</label>
+          <input type="date" id="tanggal-survei" name="tanggal_survei" aria-describedby="tanggal-survei-error">
+          <small id="tanggal-survei-error" class="error-text" aria-live="polite"></small>
         </p>
 
         <p>
           <label for="pesan">Pesan atau Rencana Survei:</label>
-          <textarea id="pesan" name="pesan" rows="4" placeholder="Tuliskan pertanyaan atau tanggal rencana survei..."></textarea>
+          <textarea id="pesan" name="pesan" rows="4" aria-describedby="pesan-error" placeholder="Tuliskan pertanyaan atau rencana survei..."></textarea>
+          <small id="pesan-error" class="error-text" aria-live="polite"></small>
         </p>
 
-        <p>
-          <button type="submit">Kirim Pesan</button>
-        </p>
+        <p><button type="submit">Pratinjau Data Minat</button></p>
       </form>
+      <section id="daftar-minat" class="summary-card" aria-labelledby="daftar-minat-heading" aria-live="polite" hidden>
+        <h3 id="daftar-minat-heading">Daftar Isian Data Minat</h3>
+        <ol id="item-daftar-minat"></ol>
+      </section>
     </section>
 
   </main>

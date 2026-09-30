@@ -229,10 +229,124 @@ tombolTema?.addEventListener('click', () => {
   }
 });
 
-// Menghentikan submit demo, menampilkan konfirmasi, lalu mereset formulir.
-const formulir = document.querySelector('#kontak form');
+// Baca dan normalkan nilai formulir minat sewa.
+export function readFormData(form) {
+  const formData = new FormData(form);
+  return {
+    nama: String(formData.get('nama') ?? '').trim(),
+    telepon: String(formData.get('telepon') ?? '').trim(),
+    email: String(formData.get('email') ?? '').trim(),
+    pilihan_pintu: String(formData.get('pilihan_pintu') ?? '').trim(),
+    tanggal_survei: String(formData.get('tanggal_survei') ?? '').trim(),
+    pesan: String(formData.get('pesan') ?? '').trim()
+  };
+}
+
+// Pesan untuk field kosong dibedakan dari format/nilai yang tidak valid.
+export function validateForm(formData) {
+  const errors = {};
+  const unitTersedia = ['pintu-02', 'pintu-03'];
+  const now = new Date();
+  const today = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+  if (!formData.nama) errors.nama = 'Nama lengkap wajib diisi.';
+  else if (!/^[\p{L} ]{3,}$/u.test(formData.nama)) errors.nama = 'Format nama tidak valid: gunakan minimal 3 huruf dan spasi saja.';
+
+  if (!formData.telepon) errors.telepon = 'Nomor WhatsApp wajib diisi.';
+  else if (!/^08\d{8,12}$/.test(formData.telepon)) errors.telepon = 'Format nomor tidak valid: gunakan angka saja, diawali 08 (10–14 digit).';
+
+  if (!formData.email) errors.email = 'Email wajib diisi.';
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errors.email = 'Format email tidak valid. Contoh: nama@contoh.com.';
+
+  if (!formData.pilihan_pintu) errors['pilihan-pintu'] = 'Unit pintu wajib dipilih.';
+  else if (!unitTersedia.includes(formData.pilihan_pintu)) errors['pilihan-pintu'] = 'Pilih unit yang tersedia dari daftar.';
+
+  if (formData.tanggal_survei) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(formData.tanggal_survei)) errors['tanggal-survei'] = 'Format tanggal rencana tidak valid.';
+    else if (formData.tanggal_survei > today) errors['tanggal-survei'] = 'Tanggal rencana tidak boleh melebihi hari ini.';
+  }
+  return errors;
+}
+
+// Cegah pengiriman ke server; tampilkan error terkait atau preview data valid.
+const formulir = document.querySelector('#form-minat');
+const daftarMinat = document.querySelector('#daftar-minat');
+const itemDaftarMinat = document.querySelector('#item-daftar-minat');
+const fieldIds = {
+  nama: 'nama',
+  telepon: 'telepon',
+  email: 'email',
+  'pilihan-pintu': 'pilihan-pintu',
+  'tanggal-survei': 'tanggal-survei',
+  pesan: 'pesan'
+};
+
+const inputTanggalSurvei = document.querySelector('#tanggal-survei');
+if (inputTanggalSurvei) {
+  const now = new Date();
+  inputTanggalSurvei.max = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+}
+
+function perbaruiFeedbackField(field, id) {
+  const input = document.getElementById(id);
+  const errorText = document.getElementById(`${id}-error`);
+  if (!input || !errorText) return;
+  const error = validateForm(readFormData(formulir))[field];
+  input.setAttribute('aria-invalid', String(Boolean(error)));
+  errorText.textContent = error ?? '';
+}
+
+Object.entries(fieldIds).forEach(([field, id]) => {
+  const input = document.getElementById(id);
+  input?.addEventListener('input', () => perbaruiFeedbackField(field, id));
+  input?.addEventListener('change', () => perbaruiFeedbackField(field, id));
+  input?.addEventListener('blur', () => perbaruiFeedbackField(field, id));
+});
+
 formulir?.addEventListener('submit', event => {
   event.preventDefault();
-  alert('Terima kasih! Minat sewa Anda berhasil dicatat.');
-  formulir.reset();
+  const fields = Object.entries(fieldIds);
+  fields.forEach(([, id]) => {
+    document.getElementById(id)?.setAttribute('aria-invalid', 'false');
+    const errorText = document.getElementById(`${id}-error`);
+    if (errorText) errorText.textContent = '';
+  });
+  const data = readFormData(formulir);
+  const errors = validateForm(data);
+  const invalidFields = fields.filter(([field]) => errors[field]);
+  if (invalidFields.length) {
+    invalidFields.forEach(([field, id]) => {
+      document.getElementById(id)?.setAttribute('aria-invalid', 'true');
+      const errorText = document.getElementById(`${id}-error`);
+      if (errorText) errorText.textContent = errors[field];
+    });
+    document.getElementById(invalidFields[0][1])?.focus();
+    return;
+  }
+
+  if (!itemDaftarMinat || !daftarMinat) return;
+  const labelUnit = formulir.elements.pilihan_pintu.selectedOptions[0]?.textContent.trim() ?? data.pilihan_pintu;
+  const labels = [
+    ['Nama Lengkap', data.nama],
+    ['Nomor WhatsApp', data.telepon],
+    ['Email', data.email],
+    ['Unit Pintu', labelUnit],
+    ['Tanggal Rencana Survei', data.tanggal_survei || 'Tidak diisi'],
+    ['Pesan', data.pesan || 'Tidak ada pesan']
+  ];
+  const item = document.createElement('li');
+  item.className = 'interest-entry';
+  const judul = document.createElement('h4');
+  judul.textContent = `Minat sewa ${itemDaftarMinat.children.length + 1}`;
+  const detail = document.createElement('dl');
+  labels.forEach(([label, value]) => {
+    const term = document.createElement('dt');
+    term.textContent = label;
+    const description = document.createElement('dd');
+    description.textContent = value;
+    detail.append(term, description);
+  });
+  item.append(judul, detail);
+  itemDaftarMinat.append(item);
+  daftarMinat.hidden = false;
 });
