@@ -1,6 +1,111 @@
 // Memakai fungsi statistik yang dipisahkan ke utils.js.
 import { ringkasInventaris } from './utils.js';
 
+// Konfigurasi Endpoint Modul 7
+const USE_LOCAL_DATA = true; // Set true jika lab offline
+const endpoint = USE_LOCAL_DATA 
+  ? './data/dataPintu.json' 
+  : 'https://jsonplaceholder.typicode.com/users';
+
+const output = document.querySelector('#api-output');
+const message = document.querySelector('#api-message');
+const btnRetry = document.querySelector('#btn-retry');
+
+// FUNGSI UTAMA FETCH DATA API MODUL 7
+async function loadUsers() {
+  if (message) {
+    message.textContent = 'Memuat data unit kost...';
+    message.className = 'status-message loading';
+  }
+  if (btnRetry) btnRetry.style.display = 'none';
+  if (output) output.replaceChildren();
+
+  try {
+    const response = await fetch(endpoint);
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    renderCards(data);
+
+    // 1. Tampilkan pesan sukses
+    if (message) {
+      message.textContent = `Berhasil memuat ${data.length} data unit kost.`;
+      message.className = 'status-message success';
+
+      // 2. Hilangkan teks pesan secara otomatis setelah 3 detik (3000 ms)
+      setTimeout(() => {
+        message.textContent = '';
+      }, 3000);
+    }
+
+  } catch (error) {
+    console.error('Fetch Error:', error);
+    if (message) {
+      message.textContent = 'Data belum dapat dimuat. Coba kembali.';
+      message.className = 'status-message error';
+
+      // Hilangkan pesan error secara otomatis setelah 3 detik
+      setTimeout(() => {
+        message.textContent = '';
+      }, 3000);
+    }
+    if (btnRetry) btnRetry.style.display = 'inline-block';
+  }
+}
+
+// 4. FUNGSI RENDER KE DOM 
+function renderCards(items) {
+  if (!output) return;
+  output.replaceChildren(); // Safe DOM Update
+
+  if (items.length === 0) {
+    const pesanKosong = document.createElement('p');
+    pesanKosong.textContent = 'Unit yang Anda cari tidak ditemukan.';
+    output.append(pesanKosong);
+    return;
+  }
+
+  items.slice(0, 5).forEach(item => {
+    const article = document.createElement('article');
+    article.className = 'card-unit';
+
+    // 1. Elemen Gambar (Gambar saja tanpa figcaption agar nama tidak dobel)
+    const figure = document.createElement('figure');
+    const img = document.createElement('img');
+    img.src = item.gambar || 'pintukost.jpeg';
+    img.alt = `Tampak depan unit ${item.nama || item.name} Kost Pak Sapriadi`;
+    img.width = 300;
+    img.loading = 'lazy';
+    figure.append(img); // Cukup masukkan img saja tanpa figcaption nama unit
+
+    // 2. Nama Unit Pintu 
+    const h3 = document.createElement('h3');
+    h3.textContent = item.nama || item.name;
+
+    // 3. Status Ketersediaan Unit
+    const pStatus = document.createElement('p');
+    pStatus.textContent = `Status: ${item.status || 'Tersedia'}`;
+
+    // 4. Tarif Sewa
+    const pHarga = document.createElement('p');
+    pHarga.textContent = item.harga 
+      ? `Tarif sewa: Rp ${item.harga.toLocaleString('id-ID')} / bulan`
+      : `Email: ${item.email}`;
+
+    // 5. Fasilitas Unit
+    const pFasilitas = document.createElement('p');
+    pFasilitas.textContent = `Fasilitas: ${item.fasilitas || 'Ruang tengah, 2 kamar tidur, dapur, dan toilet.'}`;
+
+    // Susun elemen ke dalam kartu article (Foto dulu, baru Judul Nama & Detail)
+    article.append(figure, h3, pStatus, pHarga, pFasilitas);
+    output.append(article);
+  });
+}
+
+  
 // Sumber data inventaris yang dipakai oleh Console, pencarian, filter, dan kartu.
 const inventaris = [
   { id: 1, nama: 'Router Wi-Fi Utama', kategori: 'Fasilitas', jumlah: 1, kondisi: 'Baik', lokasi: 'Lantai 1' },
@@ -350,3 +455,7 @@ formulir?.addEventListener('submit', event => {
   itemDaftarMinat.append(item);
   daftarMinat.hidden = false;
 });
+
+
+// 5. EKSEKUSI PEMANGGILAN DITARUH DI BARIS PALING BAWAH
+loadUsers();

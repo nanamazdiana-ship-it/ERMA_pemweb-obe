@@ -29,6 +29,8 @@
         <li><a class="login-link" href="login.html">Login</a></li>
         <!-- Tombol Preferensi Tema (Modul 05) -->
         <li><button id="theme-button" class="theme-button" type="button" aria-label="Ganti ke tema gelap" title="Ganti ke tema gelap" aria-pressed="false"></button></li>
+
+
       </ul>
     </nav>
   </header>
@@ -46,7 +48,21 @@
     <section id="katalog">
       <h2>Daftar Ketersediaan Unit</h2>
 
-      <!-- Informasi unit kost (terpisah dari inventaris di bawah filter) -->
+      <!-- 1. Langkah 5 Modul 7: Indikator Status Loading & Error State API (Menggunakan tag <p>) -->
+  <p id="api-message" class="status-message" aria-live="polite"></p>
+  <p><button id="btn-retry" type="button" style="display: none;">Coba Lagi (Retry)</button></p>
+
+  <!-- 2. Langkah 2 & Latihan 2 Modul 7: Toolbar Pencarian & Filter Real-time (Menggunakan tag <p>) -->
+  <p class="toolbar" aria-label="Filter dan Pencarian Unit">
+    <label for="searchInput">Cari Unit / Fasilitas:</label>
+    <input type="search" id="searchInput" placeholder="Ketik kata kunci unit (misal: Pintu 01 / Wi-Fi)...">
+  </p>
+
+  <!-- 3. Langkah 4 Modul 7: Container Target DOM Tempat JS Merender Data dari API / JSON (Menggunakan <section>) -->
+  <section id="api-output" class="unit-grid" aria-live="polite"></section>
+</section>
+
+      <!-- Informasi unit kost (terpisah dari inventaris di bawah filter) 
       <div class="unit-grid" aria-label="Informasi unit kost">
         <article class="card">
           <h3>Unit Pintu 01</h3>
@@ -70,12 +86,15 @@
           <p>Fasilitas: Ruang tengah, 2 kamar tidur, dapur, dan toilet.</p>
         </article>
       </div>
-
-      <div class="search-toolbar">
+          <div class="search-toolbar">
         <label for="cari-inventaris">Cari nama inventaris:</label>
         <input type="search" id="cari-inventaris" placeholder="Contoh: Router Wi-Fi" autocomplete="off">
       </div>
 
+      
+      //-->
+
+  
       <!-- Toolbar Filter Kondisi  -->
       <div class="toolbar" role="group" aria-label="Filter inventaris kost">
         <span>Filter Kondisi:</span>
