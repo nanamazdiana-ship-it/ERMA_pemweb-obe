@@ -1,0 +1,14 @@
+
+{
+    "name": "kost-pak-sapriadi/pemweb-obe",
+    "description": "API website Kost Pak Sapriadi",
+    "type": "project",
+    "require": {
+        "php": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kost\\": "src/"
+        }
+    }
+}
