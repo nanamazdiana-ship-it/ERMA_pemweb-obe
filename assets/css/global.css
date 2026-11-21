@@ -1,0 +1,161 @@
+/* ==========================================
+   1. CSS RESET DAN VARIABEL WARNA
+   Mengatur warna utama dan menghapus margin
+   serta padding bawaan browser.
+   ========================================== */
+
+:root {
+  --primary-color: #b52e53;
+  --secondary-color: #85885a;
+  --bg-color: #f8f6eb;
+  --text-color: #302d27;
+  --card-bg: #fffdf5;
+  --border-color: #d8d2b7;
+}
+
+/* Variabel warna ketika tema gelap aktif */
+[data-theme="dark"] {
+  --primary-color: #d65a76;
+  --secondary-color: #b6b98a;
+  --bg-color: #24251e;
+  --text-color: #f8f3df;
+  --card-bg: #303126;
+  --border-color: #565744;
+}
+
+/* Reset dasar seluruh elemen */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================
+   2. BODY DAN KONTEN UTAMA
+   Mengatur jenis huruf, warna, dan jarak halaman.
+   ========================================== */
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+main > section {
+  margin-bottom: 2rem;
+}
+
+/* ==========================================
+   3. SKIP LINK AKSESIBILITAS
+   Link muncul ketika pengguna memfokuskannya.
+   ========================================== */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ==========================================
+   4. HEADER, LOGO, DAN NAVIGASI
+   Mengatur posisi logo dan menu halaman.
+   ========================================== */
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 1.75rem;
+}
+
+/* Menjaga ukuran logo tetap sesuai */
+header > a {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+header > a img {
+  display: block;
+  width: 120px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Susunan menu navigasi */
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Tombol login pada navigasi */
+nav a.login-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+nav a.login-link:hover {
+  opacity: 0.9;
+}
+
+/* Indikator fokus untuk navigasi dan kontrol */
+nav a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+@media (max-width: 600px) {
+  header {
+    align-items: flex-start;
+  }
+
+  nav ul {
+    justify-content: flex-start;
+    gap: 0.75rem;
+  }
+
+  #daftar-alat {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-size-control {
+    flex-wrap: wrap;
+  }
+}
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}

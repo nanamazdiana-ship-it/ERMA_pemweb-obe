@@ -1,0 +1,178 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Kolom pencarian inventaris */
+.search-toolbar {
+  max-width: 32rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* Pengaturan jumlah inventaris per halaman */
+.page-size-control {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.page-size-control select {
+  width: auto;
+  min-width: 5rem;
+}
+
+/* Navigasi pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* ==========================================
+   6. TOMBOL DAN IKON PERGANTIAN TEMA
+   Mendukung fitur tema dari modul.
+   ========================================== */
+
+.theme-button {
+  display: inline-grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.45rem;
+  place-items: center;
+}
+
+.theme-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+#daftar-alat {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Tampilan dasar kartu */
+.card,
+.card-unit {
+  min-width: 0;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 0.9rem;
+  padding: 1rem;
+  overflow-wrap: anywhere;
+}
+
+/* Jarak antarparagraf dalam kartu */
+.card p + p,
+.card-unit p + p {
+  margin-top: 0.3rem;
+}
+
+/* Judul kartu */
+.card h3,
+.card-unit h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* Bagian detail inventaris */
+.item-detail {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.item-detail[hidden] {
+  display: none;
+}
+/* ==========================================
+   10. PESAN STATUS API
+   Memastikan pesan loading dan error tetap terbaca.
+   ========================================== */
+
+.status-message {
+  margin: 0.5rem 0;
+}
+
+/* ==========================================
+   11. FORMULIR DAN VALIDASI
+   Untuk formulir data minat sesuai modul.
+   ========================================== */
+
+form p {
+  margin-bottom: 1rem;
+}
+
+/* Label formulir */
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Input, pilihan, dan area teks */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Pesan kesalahan validasi */
+.error-text {
+  display: block;
+  min-height: 1.5em;
+  color: #a11f32;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .error-text {
+  color: #ff9aaa;
+}
+
+/* Penanda input yang tidak valid */
+[aria-invalid="true"] {
+  border-color: #a11f32;
+  box-shadow: 0 0 0 1px #a11f32;
+}
+
+[data-theme="dark"] [aria-invalid="true"] {
+  border-color: #ff9aaa;
+  box-shadow: 0 0 0 1px #ff9aaa;
+}

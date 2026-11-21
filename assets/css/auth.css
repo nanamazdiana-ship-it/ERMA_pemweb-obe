@@ -1,0 +1,25 @@
+/* ==========================================
+   MODUL 12 - AKUN (LOGIN)
+   ========================================== */
+[hidden] {
+  display: none !important;
+}
+
+.auth-section form,
+.auth-section article {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-block: 1rem;
+  max-width: 32rem;
+}
+
+.auth-section input[aria-invalid="true"] {
+  border-color: var(--primary-color);
+}
+
+#sewa-list {
+  margin-left: 1.25rem;
+  margin-block: 0.5rem;
+}
