@@ -1,0 +1,74 @@
+/* ==========================================
+   MODUL 11 - KELOLA UNIT (CRUD)
+   ========================================== */
+.crud-section form {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-block: 1rem;
+}
+
+.crud-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#crud-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+}
+
+#crud-table caption {
+  text-align: left;
+  padding-block: 0.5rem;
+  font-weight: 600;
+}
+
+#crud-table th,
+#crud-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+@media (max-width: 40rem) {
+  #crud-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+.crud-section .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-block: 1rem;
+}
+
+.crud-section input[aria-invalid="true"] {
+  border-color: var(--primary-color);
+}
+
+.status-message.success { color: #1a6b3a; font-weight: 600; }
+.status-message.error { color: var(--primary-color); font-weight: 600; }
+.status-message.loading { color: var(--text-color); opacity: 0.75; }
+
+#crud-table button + button { margin-inline-start: 0.35rem; }
+#crud-table button:disabled,
+button:disabled { cursor: not-allowed; opacity: 0.6; }
+
+.status-available,
+.status-occupied {
+  display: table-cell;
+  font-weight: 700;
+}
+.status-available { color: #176b3a; }
+.status-occupied { color: #8a4b08; }
+
+input, select, textarea, button { font: inherit; }
+textarea { max-width: 100%; }
+

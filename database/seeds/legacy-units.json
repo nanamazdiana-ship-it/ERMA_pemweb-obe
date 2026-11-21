@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "kode": "Pintu-01",
+    "nama": "Pintu 1",
+    "status": "Tersedia",
+    "harga": 1000000,
+    "fasilitas": "Ruang tengah, 2 kamar tidur, dapur, toilet mandiri, Wi-Fi",
+    "gambar": "pintuKost.jpeg"
+  },
+  {
+    "id": 2,
+    "kode": "Pintu-02",
+    "nama": "Pintu 2",
+    "status": "Terisi",
+    "harga": 1000000,
+    "fasilitas": "Ruang tengah, 2 kamar tidur, dapur, toilet mandiri, tandon air",
+    "gambar": "pintuKost.jpeg"
+  },
+  {
+    "id": 3,
+    "kode": "Pintu-03",
+    "status": "Tersedia",
+    "nama": "Pintu 3",
+    "harga": 1000000,
+    "fasilitas": "Ruang tengah, 2 kamar tidur, dapur, toilet mandiri, Wi-Fi",
+    "gambar": "pintuKost.jpeg"
+  }
+]
