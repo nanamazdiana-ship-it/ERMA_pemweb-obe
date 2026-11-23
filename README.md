@@ -10,14 +10,7 @@ Website informasi dan pengelolaan kost berbasis HTML, CSS, JavaScript ES modules
 4. **Database yang sudah berisi data:** buat backup. Pastikan tabel lama `unit_kost`, `penghuni_kost`, `transaksi_sewa`, dan `pembayaran_kost` cocok dengan struktur proyek. Jalankan `database/migrations/001_add_unit_facilities.sql` hanya jika kolom `fasilitas` belum ada, lalu jalankan `002_create_auth_and_inventory.sql` dan `003_create_complaints.sql`. Migrasi menambah kolom fasilitas, membuat tabel akun/inventaris/pengaduan, dan mengimpor inventaris lama tanpa menghapus atau mengubah baris unit, penghuni, sewa, atau pembayaran.
 5. Salin `.env.example` menjadi `.env`, lalu atur `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` sesuai MySQL lokal. Jangan commit `.env`.
 6. Jalankan `composer install` jika folder `vendor/` belum ada.
-7. Buat akun awal dari terminal Laragon:
-
-   ```powershell
-   php bin/create-user.php "Admin Kost" admin@example.test admin
-   ```
-
-   Masukkan password minimal 12 karakter saat diminta (prompt Windows menyembunyikan input). Buat akun `petugas` atau `penghuni` dengan mengganti role; akun penghuni harus ditautkan ke ID pada tabel `penghuni_kost`, misalnya `php bin/create-user.php "Nama Penghuni" penghuni@example.test penghuni 2`. Password disimpan sebagai hash `password_hash()`.
-   Reset password akun yang lupa dengan `php bin/reset-user-password.php admin@example.test`, lalu masukkan password baru saat diminta.
+7. Provision akun admin awal melalui proses lokal/terpercaya yang tidak disimpan di repository. Repository ini tidak menyertakan tool pembuat akun admin. Untuk reset password akun yang sudah ada, jalankan `php bin/reset-user-password.php admin@example.test` dari terminal Laragon lalu masukkan password baru saat diminta.
 8. Buka `http://localhost/pemweb-obe/`. `index.php` menangani halaman melalui parameter `?page=`.
 
 ## Hak akses
